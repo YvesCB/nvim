@@ -1,0 +1,14 @@
+{
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "prettier.disableSuccessMessage": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "tsserver.formatOnType": true,
+    "coc.preferences.formatOnType": true,
+    "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\14.0.0\\clangd_14.0.0\\bin\\clangd.exe"
+}
