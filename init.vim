@@ -1,95 +1,97 @@
 " DONT CHANGE THIS
-call plug#begin('C:/Users/Yves/AppData/Local/nvim/plugged') 
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-" To comment out a single line, use <leader>cc
-" To uncomment a line, use <leader>cu
-Plug 'vim-scripts/Rename2'
+call plug#begin('$HOMEPATH/AppData/Local/nvim/plugged') 
+    " General Plugins
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'itchyny/lightline.vim'
+    Plug 'itchyny/vim-gitbranch'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'scrooloose/nerdtree'
+    Plug 'tpope/vim-ragtag'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-commentary'
+    Plug 'sbdchd/neoformat'
+    Plug 'neomake/neomake'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'pangloss/vim-javascript'
+    Plug 'MaxMEllon/vim-jsx-pretty'
+    Plug 'styled-components/vim-styled-components'
+    Plug 'machakann/vim-highlightedyank'
+    Plug 'justinmk/vim-sneak'
+    Plug 'szw/vim-maximizer'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'kassio/neoterm'
+    Plug 'sbdchd/neoformat'
+    Plug 'junegunn/fzf', { 'dir': '$HOMEPATH/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-gitgutter'
 
-" React stuff
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'styled-components/vim-styled-components'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-  \ 'coc-tsserver'
-  \ ]
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
+    Plug 'rust-lang/rust.vim', {'for': 'rust'} 
 
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
-" Plug 'alvan/vim-closetag'
-" Plug 'sukima/xmledit/'
+    " Coc settings
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    
+    if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+      let g:coc_global_extensions += ['coc-prettier']
+    endif
 
-Plug 'tpope/vim-ragtag'
+    if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+      let g:coc_global_extensions += ['coc-eslint']
+    endif
 
-Plug 'sbdchd/neoformat'
-" Plug 'davidhalter/jedi-vim'
-" <leader>d: go to definition
-" K: check documentation of class or method
-" <leader>n: show the usage of a name in current file
-" <leader>r: rename a name
-
-Plug 'scrooloose/nerdtree'
-" File tree, open with :NERDTree
-
-Plug 'neomake/neomake'
-Plug 'terryma/vim-multiple-cursors'
-" Use <Ctrl-N> to rename variable under cursor
-
-Plug 'machakann/vim-highlightedyank'
-" Plug 'tmhedberg/SimpylFold'
-" zo Open fold in current cursor position
-" zO Open fold and sub-fold in current cursor position recursively
-" zc Close the fold in current cursor position
-" zC Close the fold and sub-fold in current cursor position recursively
-
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf'
-Plug 'rust-lang/rust.vim', {'for': 'rust'} 
-
-" Git Plugs
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
-
-Plug 'justinmk/vim-sneak'
-
-" Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+    " Color theme
+    Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
-:cd C:\git
+colorscheme codedark
+
+set guifont=JetBrainsMono\ NF:h16
+
+" Start in the HOMEPATH
+:cd $HOMEPATH  
+
+" Sourcing plugin specific configs
+source $HOMEPATH\AppData\Local\nvim\plug-config\markdown-preview.vim
+source $HOMEPATH\AppData\Local\nvim\plug-config\coc.vim
 
 set exrc
+set rtp+=$HOMEPATH/.fzf
 
 syntax enable
 filetype plugin indent on
 
-source C:\Users\Yves\AppData\Local\nvim\plug-config\signify.vim
-source C:\Users\Yves\AppData\Local\nvim\plug-config\markdown-preview.vim
-source C:\Users\Yves\AppData\Local\nvim\plug-config\coc.vim
-
 set number
 set relativenumber
-set tabstop=8
+set mouse=a
+set tabstop=4
 set shiftwidth=4
 set expandtab
+set ignorecase
+set smartcase
+set incsearch
+set diffopt+=vertical
+set hidden
+set nobackup
+set nowritebackup
+set signcolumn=yes
+set updatetime=300
+set shortmess+=c
+set cmdheight=1
 
 " Splits
 set splitbelow
 set splitright
 
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
+let mapleader = " "
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+"=================== REMAPS ==================
+
+nmap <C-Tab> :bnext<cr>
+nmap <C-S-Tab> :bprevious<cr>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -102,38 +104,87 @@ noremap <silent> <C-Right> :vertical resize -3<CR>
 noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
 
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
-let g:airline_theme='tomorrow'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:sneak#s_next=1
-
-let g:neomake_python_enabled_makers = ['pylint', 'cppcheck', 'cargo']
-
-" Markdown
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = ''
-
-" neovide specific settings:
-
-let g:neovide_refresh_rate=100
-set guifont=JetBrainsMono\ NF:h14
-
-colorscheme gruvbox
-
 " Extra Remaps
-map <F4> :NERDTree<CR>
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+nmap <F4> :NERDTree<CR>
 nmap <F5> :vsp <bar> :terminal .\build.bat <CR>
 nmap <F6> :vsp <bar> :terminal .\run.bat <CR>
 
 nmap <C-,> :nohl <CR>
 
+" szw/vim-maximizer
+nnoremap <leader>m :MaximizerToggle!<CR>
+
+" kassio/neoterm
+nnoremap <c-q> :Ttoggle<CR>
+inoremap <c-q> <Esc> :Ttoggle<CR>
+inoremap <c-q> <c-\><c-n> :Ttoggle<CR>
+
+" sbdchd/neoformat
+nnoremap <leader>F :Neoformat prettier<CR>
+
+" junegunn/fzf
+nnoremap <leader><space> :GFiles<CR> 
+nnoremap <leader>ff :Rg<CR> 
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
+            \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
+            \ fzf#wrap ({'dir': expand('%:p:h')}))
+if has('nvim')
+    au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+    au! FileType fzf tunmap <buffer> <Esc>
+endif
+
+" tpope/vim-fugitive
+nnoremap <leader>gg :G<CR>
+
+"================ AUTOCOMMANDS ================
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
+
+" Skeletons
+autocmd BufNewFile *.tsx 0r $HOMEPATH\AppData\Local\nvim\skeletons\react-typescript.tsx
+autocmd BufNewFile *.html 0r $HOMEPATH\AppData\Local\nvim\skeletons\html.html
+autocmd BufNewFile *.py 0r $HOMEPATH\AppData\Local\nvim\skeletons\python.py
+autocmd BufNewFile *.c 0r $HOMEPATH\AppData\Local\nvim\skeletons\c.c
+autocmd BufNewFile *.h 0r $HOMEPATH\AppData\Local\nvim\skeletons\h.h
+autocmd BufNewFile *.cpp 0r $HOMEPATH\AppData\Local\nvim\skeletons\cpp.cpp
+
+"================ GLOBALS ======================
+
+" kassio/neoterm
+let g:neoterm_default_mod = 'vertical'
+let g:neoterm_size = 60
+let g:neoterm_autoinsert = 1
+
+" itchyny/lightline and itchyny/vim-gitbranch
+let g:lightline = {
+    \ 'active': {
+    \ 'left': [['mode', 'paste'], 
+    \          ['gitbranch', 'readonly', 'filename', 'modified']]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'gitbranch#name'
+    \ },
+    \ 'colorscheme': 'codedark',
+    \ }
+
+let g:sneak#s_next=1
+
+let g:neomake_python_enabled_makers = ['pylint', 'cppcheck', 'cargo']
+
+let g:neovide_refresh_rate=100
 
 " Tag completion
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -178,20 +229,3 @@ let g:closetag_shortcut = '>'
 "
 let g:closetag_close_shortcut = '<leader>>'
 
-autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType javascriptreact setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
-autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
-
-" Skeletons
-autocmd BufNewFile *.tsx 0r C:\Users\Yves\AppData\Local\nvim\skeletons\react-typescript.tsx
-autocmd BufNewFile *.html 0r C:\Users\Yves\AppData\Local\nvim\skeletons\html.html
-autocmd BufNewFile *.py 0r C:\Users\Yves\AppData\Local\nvim\skeletons\python.py
-autocmd BufNewFile *.c 0r C:\Users\Yves\AppData\Local\nvim\skeletons\c.c
-autocmd BufNewFile *.h 0r C:\Users\Yves\AppData\Local\nvim\skeletons\h.h
-autocmd BufNewFile *.cpp 0r C:\Users\Yves\AppData\Local\nvim\skeletons\cpp.cpp
