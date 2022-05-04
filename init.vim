@@ -22,10 +22,9 @@ call plug#begin('~/AppData/Local/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'kassio/neoterm'
     Plug 'sbdchd/neoformat'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'airblade/vim-gitgutter'
-    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-lua/plenary.nvim'
 
     Plug 'rust-lang/rust.vim', {'for': 'rust'} 
 
@@ -46,7 +45,7 @@ call plug#end()
 
 colorscheme codedark
 
-set guifont=JetBrainsMono\ NF:h16
+set guifont=JetBrainsMono\ NF:h14
 
 " Start in the HOMEPATH
 :cd $HOMEPATH  
@@ -123,16 +122,10 @@ inoremap <c-q> <c-\><c-n> :Ttoggle<CR>
 " sbdchd/neoformat
 nnoremap <leader>F :Neoformat prettier<CR>
 
-" junegunn/fzf
-nnoremap <leader><space> :GFiles<CR> 
-nnoremap <leader>ff :Rg<CR> 
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
-            \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
-            \ fzf#wrap ({'dir': expand('%:p:h')}))
-if has('nvim')
-    au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
-    au! FileType fzf tunmap <buffer> <Esc>
-endif
+" nvim-telescope/telescope.nvim
+nnoremap <leader><space> :Telescope find_files<CR> 
+nnoremap <leader>tg :Telescope git_files<CR> 
+nnoremap <leader>tl :Telescope live_grep<CR> 
 
 " tpope/vim-fugitive
 nnoremap <leader>gg :G<CR>
