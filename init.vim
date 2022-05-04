@@ -1,5 +1,5 @@
 " DONT CHANGE THIS
-call plug#begin('$HOMEPATH/AppData/Local/nvim/plugged') 
+call plug#begin('~/AppData/Local/nvim/plugged') 
     " General Plugins
     Plug 'ryanoasis/vim-devicons'
     Plug 'itchyny/lightline.vim'
@@ -22,9 +22,10 @@ call plug#begin('$HOMEPATH/AppData/Local/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'kassio/neoterm'
     Plug 'sbdchd/neoformat'
-    Plug 'junegunn/fzf', { 'dir': '$HOMEPATH/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'airblade/vim-gitgutter'
+    Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
     Plug 'rust-lang/rust.vim', {'for': 'rust'} 
 
@@ -51,11 +52,11 @@ set guifont=JetBrainsMono\ NF:h16
 :cd $HOMEPATH  
 
 " Sourcing plugin specific configs
-source $HOMEPATH\AppData\Local\nvim\plug-config\markdown-preview.vim
-source $HOMEPATH\AppData\Local\nvim\plug-config\coc.vim
+source ~\AppData\Local\nvim\plug-config\markdown-preview.vim
+source ~\AppData\Local\nvim\plug-config\coc.vim
 
 set exrc
-set rtp+=$HOMEPATH/.fzf
+set rtp+=~/.fzf
 
 syntax enable
 filetype plugin indent on
@@ -154,12 +155,12 @@ autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescriptreact setlocal shiftwidth=2 tabstop=2
 
 " Skeletons
-autocmd BufNewFile *.tsx 0r $HOMEPATH\AppData\Local\nvim\skeletons\react-typescript.tsx
-autocmd BufNewFile *.html 0r $HOMEPATH\AppData\Local\nvim\skeletons\html.html
-autocmd BufNewFile *.py 0r $HOMEPATH\AppData\Local\nvim\skeletons\python.py
-autocmd BufNewFile *.c 0r $HOMEPATH\AppData\Local\nvim\skeletons\c.c
-autocmd BufNewFile *.h 0r $HOMEPATH\AppData\Local\nvim\skeletons\h.h
-autocmd BufNewFile *.cpp 0r $HOMEPATH\AppData\Local\nvim\skeletons\cpp.cpp
+autocmd BufNewFile *.tsx 0r ~\AppData\Local\nvim\skeletons\react-typescript.tsx
+autocmd BufNewFile *.html 0r ~\AppData\Local\nvim\skeletons\html.html
+autocmd BufNewFile *.py 0r ~\AppData\Local\nvim\skeletons\python.py
+autocmd BufNewFile *.c 0r ~AppData\Local\nvim\skeletons\c.c
+autocmd BufNewFile *.h 0r ~\AppData\Local\nvim\skeletons\h.h
+autocmd BufNewFile *.cpp 0r ~\AppData\Local\nvim\skeletons\cpp.cpp
 
 "================ GLOBALS ======================
 
