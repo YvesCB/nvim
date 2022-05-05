@@ -7,7 +7,11 @@ local set = vim.opt
 -- in lua\plugins.lua
 require("plugins")
 
--- ============= GENERAL =============
+-- ========== LANGUAGE SERVER ===========
+-- in lua\lspconfig
+require("lspconfig")
+
+-- ============= GENERAL ================
 
 vim.g.mapleader = " "
 
@@ -34,7 +38,6 @@ set.diffopt:append("vertical")
 set.shortmess:append("c")
 
 cmd([[
-:cd ~  
 colorscheme codedark
 
 syntax enable
@@ -47,38 +50,6 @@ if (has("termguicolors"))
     set termguicolors
 endif
 ]])
-
--- ================ REMAPS ==============
-
--- Buffer navigation
-keymap.set("n", "<c-tab>", ":bnext<cr>")
-keymap.set("n", "<c-s-tab>", ":bprevious<cr>")
-
--- Split navigation
-keymap.set("n", "<c-j>", "<c-w><c-j>", {remap = true})
-keymap.set("n", "<c-k>", "<c-w><c-k>", {remap = true})
-keymap.set("n", "<c-l>", "<c-w><c-l>", {remap = true})
-keymap.set("n", "<c-h>", "<c-w><c-h>", {remap = true})
-
--- szw/vim-maximizer
-keymap.set("n", "<leader>m", ":MaximizerToggle!<CR>")
-
--- kassio/neoterm
-keymap.set("n", "<c-q>", ":Ttoggle<CR>")
-keymap.set("i", "<c-q>", "<esc> :Ttoggle<CR>")
-keymap.set("i", "<c-q>", "<c-\\><c-n> :Ttoggle<CR>")
-
--- sbdchd/neoformat
-keymap.set("n", "<leader>F", ":Neoformat<CR>")
-
--- nvim-telescope/telescope.nvim
-keymap.set("n", "<leader><leader>", ":Telescope find_files<CR>")
-keymap.set("n", "<leader>fg", ":Telescope git_files<CR>")
-keymap.set("n", "<leader>fl", ":Telescope live_grep<CR>")
-keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-
--- tpope/vim-fugitive
-keymap.set("n", "<leader>gg", ":G<CR>")
 
 -- ================== AUTOCOMMANDS ========================
 

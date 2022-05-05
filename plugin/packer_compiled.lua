@@ -69,10 +69,25 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["auto-pairs"] = {
     loaded = true,
     path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["lightline.vim"] = {
     loaded = true,
@@ -89,6 +104,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neoterm",
     url = "https://github.com/kassio/neoterm"
   },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
@@ -101,7 +126,7 @@ _G.packer_plugins = {
   },
   ["rust.vim"] = {
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     only_cond = false,
     path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
@@ -143,7 +168,7 @@ _G.packer_plugins = {
   },
   ["vim-javascript"] = {
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     only_cond = false,
     path = "C:\\Users\\Yves\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\vim-javascript",
     url = "https://github.com/pangloss/vim-javascript"
@@ -180,9 +205,20 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-javascript'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-javascript'}, { ft = "javascript" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\vim-javascript\ftdetect\flow.vim]], true)
+vim.cmd [[source C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\vim-javascript\ftdetect\flow.vim]]
+time([[Sourcing ftdetect script at: C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\vim-javascript\ftdetect\flow.vim]], false)
+time([[Sourcing ftdetect script at: C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\vim-javascript\ftdetect\javascript.vim]], true)
+vim.cmd [[source C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\vim-javascript\ftdetect\javascript.vim]]
+time([[Sourcing ftdetect script at: C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\vim-javascript\ftdetect\javascript.vim]], false)
+time([[Sourcing ftdetect script at: C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\rust.vim\ftdetect\rust.vim]], true)
+vim.cmd [[source C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\rust.vim\ftdetect\rust.vim]]
+time([[Sourcing ftdetect script at: C:\Users\Yves\AppData\Local\nvim-data\site\pack\packer\opt\rust.vim\ftdetect\rust.vim]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
