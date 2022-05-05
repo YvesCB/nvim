@@ -9,7 +9,6 @@ require("plugins")
 
 -- ========== LANGUAGE SERVER ===========
 -- in lua\lspconfig
-require("lspconfig")
 
 -- ============= GENERAL ================
 
