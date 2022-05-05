@@ -21,7 +21,6 @@ call plug#begin('~/AppData/Local/nvim/plugged')
     Plug 'szw/vim-maximizer'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'kassio/neoterm'
-    Plug 'sbdchd/neoformat'
     Plug 'airblade/vim-gitgutter'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -90,8 +89,8 @@ endif
 
 "=================== REMAPS ==================
 
-nmap <C-Tab> :bnext<cr>
-nmap <C-S-Tab> :bprevious<cr>
+nmap <c-tab> :bnext<cr>
+nmap <c-s-tab> :bprevious<cr>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -120,12 +119,13 @@ inoremap <c-q> <Esc> :Ttoggle<CR>
 inoremap <c-q> <c-\><c-n> :Ttoggle<CR>
 
 " sbdchd/neoformat
-nnoremap <leader>F :Neoformat prettier<CR>
+nnoremap <leader>F :Neoformat<CR>
 
 " nvim-telescope/telescope.nvim
 nnoremap <leader><space> :Telescope find_files<CR> 
-nnoremap <leader>tg :Telescope git_files<CR> 
-nnoremap <leader>tl :Telescope live_grep<CR> 
+nnoremap <leader>fg :Telescope git_files<CR> 
+nnoremap <leader>fl :Telescope live_grep<CR> 
+nnoremap <leader>fb :Telescope buffers<CR> 
 
 " tpope/vim-fugitive
 nnoremap <leader>gg :G<CR>
@@ -157,6 +157,7 @@ autocmd BufNewFile *.cpp 0r ~\AppData\Local\nvim\skeletons\cpp.cpp
 
 "================ GLOBALS ======================
 
+
 " kassio/neoterm
 let g:neoterm_default_mod = 'vertical'
 let g:neoterm_size = 60
@@ -173,6 +174,10 @@ let g:lightline = {
     \ },
     \ 'colorscheme': 'codedark',
     \ }
+
+" sbdchd/neoformat
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
 
 let g:sneak#s_next=1
 
