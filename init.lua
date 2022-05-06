@@ -1,15 +1,72 @@
 local api = vim.api
 local cmd = vim.cmd
 local keymap = vim.keymap
-local set = vim.opt
 
 -- ========== PACKAGE MANAGER ===========
--- in lua\plugins.lua
-require('plugins')
+require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
+
+  use 'itchyny/lightline.vim' 
+  use 'itchyny/vim-gitbranch'
+  use 'jiangmiao/auto-pairs'
+  use 'tpope/vim-ragtag'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-commentary'
+  use 'sbdchd/neoformat'
+  use 'terryma/vim-multiple-cursors'
+  use 'machakann/vim-highlightedyank'
+  use 'justinmk/vim-sneak'
+  use 'szw/vim-maximizer'
+  use 'kassio/neoterm'
+  use 'airblade/vim-gitgutter'
+  use 'nvim-telescope/telescope.nvim'
+  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'nvim-lua/plenary.nvim'
+
+  -- Language specific
+  use { 'pangloss/vim-javascript', ft = 'javascript' }
+  use { 'rust-lang/rust.vim', ft = 'rust' } 
+
+  -- LSP and completion
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
+  -- DAP for debugging
+  use 'mfussenegger/nvim-dap'
+  use 'mfussenegger/nvim-dap-python'
+
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+  -- Theme
+  use 'tomasiser/vim-code-dark'
+end)
 
 -- ============= GENERAL ================
+-- Making it so :so reloads all the requires
+-- ...but it doesn't work
+-- require('plenary.reload').reload_module('configs')
+function _G.ReloadConfig()
+  local configs = {'keymap', 'lsp-config', 'treesitter-config'}
+  for config,_ in pairs(configs) do
+    package.loaded[config] = nil
+  end
+
+  dofile(vim.env.MYVIMRC)
+end
+
+vim.cmd('command! ReloadConfig lua ReloadConfig()')
+
+local set = vim.opt
 set.number = true
 set.relativenumber = true
+set.wrap = false
 set.expandtab = true
 set.ignorecase = true
 set.smartcase = true
@@ -18,11 +75,15 @@ set.hidden = true
 set.exrc = true
 set.splitbelow = true
 set.splitright = true
-set.tabstop = 4
-set.shiftwidth = 4
+set.showmode = false
+set.showtabline = 2
+set.tabstop = 2
+set.shiftwidth = 2
 set.cmdheight = 1
 set.updatetime = 300
 set.laststatus = 3
+set.scrolloff = 3
+set.colorcolumn = '90'
 set.encoding = 'utf-8'
 set.mouse = 'a'
 set.signcolumn = 'yes'
@@ -42,7 +103,7 @@ set nowritebackup
 set completeopt=menu,menuone,noselect
 
 if (has('termguicolors'))
-    set termguicolors
+  set termguicolors
 endif
 ]])
 
@@ -65,15 +126,16 @@ require('treesitter-config')
 
 -- ====================== DAP =============================
 -- in lua\dap-config.lua
+require('dap-config')
 
 -- ================== AUTOCOMMANDS ========================
 
 function myautocmd(event, pattern, group, command)
-    api.nvim_create_autocmd(event, {
-        pattern = pattern,
-        group = group,
-        command = command
-    })
+  api.nvim_create_autocmd(event, {
+    pattern = pattern,
+    group = group,
+    command = command
+  })
 end
 
 local gen_autocmd = api.nvim_create_augroup('gen_autocmd', {clear = true})
@@ -109,9 +171,9 @@ vim.g.neoterm_autoinsert = 1
 
 -- itchyny/lightline and itchyny/vim-gitbranch
 vim.g.lightline = {
-    active = { left = {{'mode', 'paste'}, {'gitbranch', 'readonly', 'filename', 'modified'}}},
-    component_function = { gitbranch = 'fugitive#head' },
-    colorscheme = 'codedark',
+  active = { left = {{'mode', 'paste'}, {'gitbranch', 'readonly', 'filename', 'modified'}}},
+  component_function = { gitbranch = 'fugitive#head' },
+  colorscheme = 'codedark',
 }
 
 -- justinmk/vim-sneak
