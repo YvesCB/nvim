@@ -5,15 +5,9 @@ local set = vim.opt
 
 -- ========== PACKAGE MANAGER ===========
 -- in lua\plugins.lua
-require("plugins")
-
--- ========== LANGUAGE SERVER ===========
--- in lua\lspconfig
+require('plugins')
 
 -- ============= GENERAL ================
-
-vim.g.mapleader = " "
-
 set.number = true
 set.relativenumber = true
 set.expandtab = true
@@ -29,12 +23,12 @@ set.shiftwidth = 4
 set.cmdheight = 1
 set.updatetime = 300
 set.laststatus = 3
-set.encoding = "utf-8"
-set.mouse = "a"
-set.signcolumn = "yes"
-set.guifont = "JetBrainsMono NF:h14"
-set.diffopt:append("vertical")
-set.shortmess:append("c")
+set.encoding = 'utf-8'
+set.mouse = 'a'
+set.signcolumn = 'yes'
+set.guifont = 'JetBrainsMono NF:h14'
+set.diffopt:append('vertical')
+set.shortmess:append('c')
 
 cmd([[
 colorscheme codedark
@@ -45,10 +39,32 @@ filetype plugin indent on
 set nobackup
 set nowritebackup
 
-if (has("termguicolors"))
+set completeopt=menu,menuone,noselect
+
+if (has('termguicolors'))
     set termguicolors
 endif
 ]])
+
+-- ==================== KEYMAP ============================
+-- in lua\keymap.lua
+vim.g.mapleader = ' '
+require('keymap')
+
+-- ================ LANGUAGE SERVER =======================
+-- in lua\lsp-config.lua
+require('lsp-config')
+
+-- ================== TREESITTER ==========================
+-- in lua\treesitter-config.lua
+require('treesitter-config')
+
+-- =================== TELESCOPE ==========================
+-- in lua\telescope-config.lua
+-- require('telescope-config')
+
+-- ====================== DAP =============================
+-- in lua\dap-config.lua
 
 -- ================== AUTOCOMMANDS ========================
 
@@ -60,43 +76,43 @@ function myautocmd(event, pattern, group, command)
     })
 end
 
-local gen_autocmd = api.nvim_create_augroup("gen_autocmd", {clear = true})
+local gen_autocmd = api.nvim_create_augroup('gen_autocmd', {clear = true})
 
-myautocmd("BufWritePost", "plugins.lua", gen_autocmd, "source <afile> | PackerCompile")
+myautocmd('BufWritePost', 'plugins.lua', gen_autocmd, 'source <afile> | PackerCompile')
 
-local tab_autocmd = api.nvim_create_augroup("tab_autocmd", {clear = true})
+local tab_autocmd = api.nvim_create_augroup('tab_autocmd', {clear = true})
 
-myautocmd("FileType", "html", tab_autocmd, "setlocal shiftwidth=2 tabstop=2")
-myautocmd("FileType", "css", tab_autocmd, "setlocal shiftwidth=2 tabstop=2")
-myautocmd("FileType", "javascript", tab_autocmd, "setlocal shiftwidth=2 tabstop=2")
-myautocmd("FileType", "javascriptreact", tab_autocmd, "setlocal shiftwidth=2 tabstop=2")
-myautocmd("FileType", "typescript", tab_autocmd, "setlocal shiftwidth=2 tabstop=2")
-myautocmd("FileType", "typescriptreact", tab_autocmd, "setlocal shiftwidth=2 tabstop=2")
+myautocmd('FileType', 'html', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
+myautocmd('FileType', 'css', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
+myautocmd('FileType', 'javascript', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
+myautocmd('FileType', 'javascriptreact', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
+myautocmd('FileType', 'typescript', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
+myautocmd('FileType', 'typescriptreact', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
 
-local skel_autocmd = api.nvim_create_augroup("skel_autocmd", {clear = true})
-local skel_path = "~\\AppData\\Local\\nvim\\skeletons\\"
+local skel_autocmd = api.nvim_create_augroup('skel_autocmd', {clear = true})
+local skel_path = '~\\AppData\\Local\\nvim\\skeletons\\'
 
-myautocmd("BufNewFile", "*.tsx", skel_autocmd, "0r "..skel_path.."react-typescript.tsx")
-myautocmd("BufNewFile", "*.html", skel_autocmd, "0r "..skel_path.."html.html")
-myautocmd("BufNewFile", "*.py", skel_autocmd, "0r "..skel_path.."python.py")
-myautocmd("BufNewFile", "*.c", skel_autocmd, "0r "..skel_path.."c.c")
-myautocmd("BufNewFile", "*.h", skel_autocmd, "0r "..skel_path.."h.h")
-myautocmd("BufNewFile", "*.cpp", skel_autocmd, "0r "..skel_path.."cpp.cpp")
+myautocmd('BufNewFile', '*.tsx', skel_autocmd, '0r '..skel_path..'react-typescript.tsx')
+myautocmd('BufNewFile', '*.html', skel_autocmd, '0r '..skel_path..'html.html')
+myautocmd('BufNewFile', '*.py', skel_autocmd, '0r '..skel_path..'python.py')
+myautocmd('BufNewFile', '*.c', skel_autocmd, '0r '..skel_path..'c.c')
+myautocmd('BufNewFile', '*.h', skel_autocmd, '0r '..skel_path..'h.h')
+myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 
 -- ==================== GLOBALS ===========================
 vim.g.neovide_refresh_rate = 100
 
 -- kassio/neoterm
-vim.g.neoterm_default_mod = "vertical"
+vim.g.neoterm_default_mod = 'vertical'
 vim.g.neoterm_size = 60
 vim.g.neoterm_autoinsert = 1
 
 -- itchyny/lightline and itchyny/vim-gitbranch
 vim.g.lightline = {
-    active = { left = {{"mode", "paste"}, {"gitbranch", "readonly", "filename", "modified"}}},
-    component_function = { gitbranch = "fugitive#head" },
-    colorscheme = "codedark",
+    active = { left = {{'mode', 'paste'}, {'gitbranch', 'readonly', 'filename', 'modified'}}},
+    component_function = { gitbranch = 'fugitive#head' },
+    colorscheme = 'codedark',
 }
 
 -- justinmk/vim-sneak
-vim.g["sneak#s_next"] = 1
+vim.g['sneak#s_next'] = 1
