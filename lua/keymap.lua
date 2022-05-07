@@ -35,7 +35,8 @@ keymap.set('n', '<leader>F', ':Neoformat<CR>')
 keymap.set('n', '<leader><leader>', ':Telescope find_files<CR>', { silent=true })
 keymap.set('n', '<leader>fg', ':Telescope git_files<CR>', { silent=true })
 keymap.set('n', '<leader>fl', ':Telescope live_grep<CR>', { silent=true })
-keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', { silent=true })
+keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { silent=true })
+keymap.set('n', '<leader>fB', ':Telescope buffers<CR>', { silent=true })
 
 -- tpope/vim-fugitive
 keymap.set('n', '<leader>gg', ':G<CR>', { silent=true })

@@ -21,7 +21,8 @@ require('packer').startup(function()
   use 'kassio/neoterm'
   use 'airblade/vim-gitgutter'
   use 'nvim-telescope/telescope.nvim'
-  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-lua/plenary.nvim'
 
   -- Language specific
@@ -37,6 +38,7 @@ require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  use 'rafamadriz/friendly-snippets'
 
   -- DAP for debugging
   use 'mfussenegger/nvim-dap'
@@ -53,7 +55,7 @@ end)
 -- ...but it doesn't work
 -- require('plenary.reload').reload_module('configs')
 function _G.ReloadConfig()
-  local configs = {'keymap', 'lsp-config', 'treesitter-config'}
+  local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
   for config,_ in pairs(configs) do
     package.loaded[config] = nil
   end
@@ -79,7 +81,7 @@ set.showmode = false
 set.showtabline = 2
 set.tabstop = 2
 set.shiftwidth = 2
-set.cmdheight = 1
+set.cmdheight = 2
 set.updatetime = 300
 set.laststatus = 3
 set.scrolloff = 3
@@ -122,7 +124,7 @@ require('treesitter-config')
 
 -- =================== TELESCOPE ==========================
 -- in lua\telescope-config.lua
--- require('telescope-config')
+require('telescope-config')
 
 -- ====================== DAP =============================
 -- in lua\dap-config.lua
@@ -162,7 +164,10 @@ myautocmd('BufNewFile', '*.h', skel_autocmd, '0r '..skel_path..'h.h')
 myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 
 -- ==================== GLOBALS ===========================
+-- neovide
 vim.g.neovide_refresh_rate = 100
+vim.g.neovide_cursor_vfx_mode = 'sonicboom'
+vim.g.neovide_window_floating_opacity = 0.6
 
 -- kassio/neoterm
 vim.g.neoterm_default_mod = 'vertical'
