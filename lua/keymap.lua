@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 -- ================ REMAPS ==============
-keymap.set('n', '<leader>oi', ':cd $MYVIMRC/.. <cr>')
+keymap.set('n', '<leader>oi', ':cd ~/.config/nvim <cr>')
 keymap.set('n', 'gF', ':vertical wincmd f<CR>')
 keymap.set('n', '<c-s>', ':%s/', {silent=true})
 keymap.set('n', 'tn', ':tabnew <cr>', {silent=true})

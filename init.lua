@@ -154,7 +154,7 @@ myautocmd('FileType', 'typescript', tab_autocmd, 'setlocal shiftwidth=2 tabstop=
 myautocmd('FileType', 'typescriptreact', tab_autocmd, 'setlocal shiftwidth=2 tabstop=2')
 
 local skel_autocmd = api.nvim_create_augroup('skel_autocmd', {clear = true})
-local skel_path = '~\\AppData\\Local\\nvim\\skeletons\\'
+local skel_path = '~/.config/nvim/skeletons/'
 
 myautocmd('BufNewFile', '*.tsx', skel_autocmd, '0r '..skel_path..'react-typescript.tsx')
 myautocmd('BufNewFile', '*.html', skel_autocmd, '0r '..skel_path..'html.html')
