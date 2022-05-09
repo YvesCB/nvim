@@ -1,6 +1,8 @@
 local keymap = vim.keymap
 
--- ================ REMAPS ==============
+-- ========================================================
+-- ======================= KEYMAP =========================
+-- ========================================================
 keymap.set('n', '<leader>oi', ':cd $MYVIMRC\\.. <cr>')
 keymap.set('n', 'gF', ':vertical wincmd f<CR>')
 keymap.set('n', '<c-s>', ':%s/', {silent=true})
@@ -57,7 +59,6 @@ keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-keymap.set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 keymap.set('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 keymap.set('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 
@@ -68,7 +69,7 @@ keymap.set('n', '<F5>', function() dap.continue() end, {silent=true})
 keymap.set('n', '<F10>', function() dap.step_over() end, {silent=true})
 keymap.set('n', '<F11>', function() dap.step_into() end, {silent=true})
 keymap.set('n', '<F12>', function() dap.step_out() end, {silent=true})
-keymap.set('n', '<F6>', function() dap.close() end, {silent=true})
+keymap.set('n', '<F6>', function() dap.terminate() end, {silent=true})
 
 keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, {silent=true})
 keymap.set('n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Break condition: ')) end, {silent=true})
@@ -80,3 +81,4 @@ keymap.set('n', '<leader>dq', function() dap.repl.close() end, {silent=true})
 
 keymap.set('n', '<leader>dv', function() widgets.hover() end, {silent=true})
 keymap.set('n', '<leader>ds', function() widgets.sidebar(widgets.scopes).open() end, {silent=true})
+

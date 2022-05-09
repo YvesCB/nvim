@@ -43,6 +43,7 @@ require('packer').startup(function()
   -- DAP for debugging
   use 'mfussenegger/nvim-dap'
   use 'mfussenegger/nvim-dap-python'
+  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -50,7 +51,9 @@ require('packer').startup(function()
   use 'tomasiser/vim-code-dark'
 end)
 
--- ============= GENERAL ================
+-- ========================================================
+-- ====================== GENERAL =========================
+-- ========================================================
 -- Making it so :so reloads all the requires
 -- ...but it doesn't work
 -- require('plenary.reload').reload_module('configs')
@@ -109,29 +112,40 @@ if (has('termguicolors'))
 endif
 ]])
 
--- ==================== KEYMAP ============================
+-- ========================================================
+-- ====================== KEYMAP ==========================
+-- ========================================================
 -- in lua\keymap.lua
 vim.g.mapleader = ' '
 require('keymap')
 
--- ================ LANGUAGE SERVER =======================
+-- ========================================================
+-- ================== LANGUAGE SERVER =====================
+-- ========================================================
 -- in lua\lsp-config.lua
 require('lsp-config')
 
--- ================== TREESITTER ==========================
+-- ========================================================
+-- ==================== TREESITTER ========================
+-- ========================================================
 -- in lua\treesitter-config.lua
 require('treesitter-config')
 
--- =================== TELESCOPE ==========================
+-- ========================================================
+-- ===================== TELESCOPE ========================
+-- ========================================================
 -- in lua\telescope-config.lua
 require('telescope-config')
 
--- ====================== DAP =============================
+-- ========================================================
+-- ======================== DAP ===========================
+-- ========================================================
 -- in lua\dap-config.lua
 require('dap-config')
 
--- ================== AUTOCOMMANDS ========================
-
+-- ========================================================
+-- ==================== AUTOCOMANDS =======================
+-- ========================================================
 function myautocmd(event, pattern, group, command)
   api.nvim_create_autocmd(event, {
     pattern = pattern,
@@ -163,7 +177,9 @@ myautocmd('BufNewFile', '*.c', skel_autocmd, '0r '..skel_path..'c.c')
 myautocmd('BufNewFile', '*.h', skel_autocmd, '0r '..skel_path..'h.h')
 myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 
--- ==================== GLOBALS ===========================
+-- ========================================================
+-- ====================== GLABALS =========================
+-- ========================================================
 -- neovide
 vim.g.neovide_refresh_rate = 100
 vim.g.neovide_cursor_vfx_mode = 'sonicboom'
