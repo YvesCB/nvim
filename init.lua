@@ -117,33 +117,33 @@ endif
 -- ========================================================
 -- ====================== KEYMAP ==========================
 -- ========================================================
--- in lua\keymap.lua
+-- in lua\config\keymap.lua
 vim.g.mapleader = ' '
-require('keymap')
+require('config.keymap')
 
 -- ========================================================
 -- ================== LANGUAGE SERVER =====================
 -- ========================================================
--- in lua\lsp-config.lua
-require('lsp-config')
+-- in lua\config\lsp-config.lua
+require('config.lsp-config')
 
 -- ========================================================
 -- ==================== TREESITTER ========================
 -- ========================================================
--- in lua\treesitter-config.lua
-require('treesitter-config')
+-- in lua\config\treesitter-config.lua
+require('config.treesitter-config')
 
 -- ========================================================
 -- ===================== TELESCOPE ========================
 -- ========================================================
--- in lua\telescope-config.lua
-require('telescope-config')
+-- in lua\config\telescope-config.lua
+require('config.telescope-config')
 
 -- ========================================================
 -- ======================== DAP ===========================
 -- ========================================================
--- in lua\dap-config.lua
-require('dap-config')
+-- in lua\config\dap-config.lua
+require('config.dap-config')
 
 -- ========================================================
 -- ==================== AUTOCOMANDS =======================
