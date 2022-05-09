@@ -5,6 +5,8 @@ local path = require('path')
 -- ======================= KEYMAP =========================
 -- ========================================================
 keymap.set('n', '<leader>oi', ':cd '..path.vim_config..' <cr>')
+keymap.set('n', '<leader>oc', ':cd '..path.code..' <cr>')
+keymap.set('n', '<leader>og', ':cd '..path.git..' <cr>')
 keymap.set('n', 'gF', ':vertical wincmd f<CR>')
 keymap.set('n', '<c-s>', ':%s/', {silent=true})
 keymap.set('n', 'tn', ':tabnew <cr>', {silent=true})
