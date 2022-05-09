@@ -1,3 +1,4 @@
 /plugged
 /plugin
 /autoload
+/lua/path.lua

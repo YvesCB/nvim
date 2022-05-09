@@ -1,9 +1,10 @@
 local keymap = vim.keymap
+local path = require('path')
 
 -- ========================================================
 -- ======================= KEYMAP =========================
 -- ========================================================
-keymap.set('n', '<leader>oi', ':cd $MYVIMRC\\.. <cr>')
+keymap.set('n', '<leader>oi', path.vim_config..' <cr>')
 keymap.set('n', 'gF', ':vertical wincmd f<CR>')
 keymap.set('n', '<c-s>', ':%s/', {silent=true})
 keymap.set('n', 'tn', ':tabnew <cr>', {silent=true})

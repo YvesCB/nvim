@@ -1,10 +1,11 @@
+local path = require('path')
 -- DAP config
 local dap = require('dap')
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 
 -- Setting up the Adapters
 
-require('dap-python').setup(vim.env.HOMEPATH..'/.virtualenvs/debugpy/Scripts/python.exe')
+require('dap-python').setup(path.debugpy)
 
 -- dapui config
 local dapui = require('dapui')
