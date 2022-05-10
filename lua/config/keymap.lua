@@ -1,6 +1,16 @@
 local keymap = vim.keymap
 local path = require('path')
 
+function toggle_spell() 
+  if vim.opt.spell:get() then
+    print("spelling off")
+    vim.opt.spell = false
+  else
+    print("spelling on")
+    vim.opt.spell = true
+  end
+end
+
 -- ========================================================
 -- ======================= KEYMAP =========================
 -- ========================================================
@@ -14,6 +24,7 @@ keymap.set('n', 'th', ':tabprevious <cr>', {silent=true})
 keymap.set('n', 'tl', ':tabnext <cr>', {silent=true})
 keymap.set('n', 'to', ':tabonly <cr>', {silent=true})
 keymap.set('n', 'tc', ':tabclose <cr>', {silent=true})
+keymap.set('n', '<leader>ss', toggle_spell, {silent=true})
 
 -- Buffer navigation
 keymap.set('n', '<c-tab>', ':bnext<cr>')

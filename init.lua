@@ -37,6 +37,8 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use 'f3fora/cmp-spell'
+  use 'hrsh7th/cmp-calc'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
@@ -60,9 +62,11 @@ end)
 -- ...but it doesn't work
 -- require('plenary.reload').reload_module('configs')
 function _G.ReloadConfig()
-  local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
-  for config,_ in pairs(configs) do
-    package.loaded[config] = nil
+  -- local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
+  for config,_ in pairs(package.loaded) do
+    if config:match('^config') then
+      package.loaded[config] = nil
+    end
   end
 
   dofile(vim.env.MYVIMRC)
@@ -83,6 +87,8 @@ set.exrc = true
 set.splitbelow = true
 set.splitright = true
 set.showmode = false
+set.spell = false
+set.spelllang = { 'en_us' }
 set.showtabline = 2
 set.tabstop = 2
 set.shiftwidth = 2
