@@ -1,6 +1,7 @@
 local keymap = vim.keymap
 local path = require('path')
 
+local opts = { noremap=true, silent=true }
 -- ========================================================
 -- ======================= KEYMAP =========================
 -- ========================================================
@@ -50,20 +51,24 @@ keymap.set('n', '<leader>gg', ':G<CR>', { silent=true })
 -- map buffer local keybindings when the language server attaches
 -- nvim/lsp
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-keymap.set('n', '<leader>od', '<cmd>lua vim.diagnostic.open_float()<CR>')
-keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-keymap.set('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>')
+keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+keymap.set('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-keymap.set('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-keymap.set('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap.set('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+keymap.set('n', '<A-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap.set('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+keymap.set('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
 -- DAP
 local dap = require('dap')

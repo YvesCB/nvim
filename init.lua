@@ -90,11 +90,11 @@ set.cmdheight = 2
 set.updatetime = 300
 set.laststatus = 3
 set.scrolloff = 3
-set.colorcolumn = '90'
+set.colorcolumn = '75'
 set.encoding = 'utf-8'
 set.mouse = 'a'
 set.signcolumn = 'yes'
-set.guifont = 'JetBrainsMono NF:h14'
+set.guifont = 'JetBrainsMono NF:h12'
 set.diffopt:append('vertical')
 set.shortmess:append('c')
 
