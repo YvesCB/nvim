@@ -86,7 +86,7 @@ set.showmode = false
 set.showtabline = 2
 set.tabstop = 2
 set.shiftwidth = 2
-set.cmdheight = 2
+set.cmdheight = 1
 set.updatetime = 300
 set.laststatus = 3
 set.scrolloff = 3
@@ -191,6 +191,11 @@ vim.g.neovide_window_floating_opacity = 0.6
 vim.g.neoterm_default_mod = 'vertical'
 vim.g.neoterm_size = 60
 vim.g.neoterm_autoinsert = 1
+
+-- denols lsp
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
 
 -- itchyny/lightline and itchyny/vim-gitbranch
 vim.g.lightline = {
