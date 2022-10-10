@@ -15,6 +15,8 @@ keymap.set('n', 'th', ':tabprevious <cr>', {silent=true})
 keymap.set('n', 'tl', ':tabnext <cr>', {silent=true})
 keymap.set('n', 'to', ':tabonly <cr>', {silent=true})
 keymap.set('n', 'tc', ':tabclose <cr>', {silent=true})
+keymap.set('n', '<leader>gp', ':Git push<cr>', {silent=true})
+keymap.set('n', '<c-f>', ':lua vim.lsp.buf.format()<cr>', {silent=true})
 
 -- Buffer navigation
 keymap.set('n', '<c-tab>', ':bnext<cr>')
@@ -33,9 +35,6 @@ keymap.set('n', '<leader>m', ':MaximizerToggle!<CR>', { silent=true })
 keymap.set('n', '<c-q>', ':Ttoggle<CR>', { silent=true })
 keymap.set('t', '<esc>', '<c-\\><c-n>', { silent=true })
 keymap.set('t', '<c-q>', '<c-\\><c-n> :Ttoggle<CR>', { silent=true })
-
--- sbdchd/neoformat
-keymap.set('n', '<leader>F', ':Neoformat<CR>')
 
 -- nvim-telescope/telescope.nvim
 keymap.set('n', '<leader><leader>', ':Telescope find_files<CR>', { silent=true })

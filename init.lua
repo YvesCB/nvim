@@ -15,7 +15,6 @@ require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
-  use 'sbdchd/neoformat'
   use 'terryma/vim-multiple-cursors'
   use 'machakann/vim-highlightedyank'
   use 'justinmk/vim-sneak'
@@ -94,7 +93,7 @@ set.colorcolumn = '75'
 set.encoding = 'utf-8'
 set.mouse = 'a'
 set.signcolumn = 'yes'
-set.guifont = 'JetBrainsMono NF:h12'
+set.guifont = 'JetBrainsMono NF:h11'
 set.diffopt:append('vertical')
 set.shortmess:append('c')
 
