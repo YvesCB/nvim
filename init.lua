@@ -27,8 +27,10 @@ require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
 
   -- Language specific
-  use { 'pangloss/vim-javascript', ft = 'javascript' }
-  use { 'rust-lang/rust.vim', ft = 'rust' } 
+  -- use { 'pangloss/vim-javascript', ft = 'javascript' }
+  -- use { 'rust-lang/rust.vim', ft = 'rust' } 
+  use 'sheerun/vim-polyglot'
+  use 'evanleck/vim-svelte'
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
