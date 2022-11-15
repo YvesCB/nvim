@@ -11,18 +11,18 @@ require('packer').startup(function()
   use 'itchyny/lightline.vim' 
   use 'itchyny/vim-gitbranch'
   use 'jiangmiao/auto-pairs'
-  use 'tpope/vim-ragtag'
+  -- use 'tpope/vim-ragtag'
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
-  use 'terryma/vim-multiple-cursors'
+  -- use 'terryma/vim-multiple-cursors'
   use 'machakann/vim-highlightedyank'
   use 'justinmk/vim-sneak'
   use 'szw/vim-maximizer'
   use 'kassio/neoterm'
   use 'airblade/vim-gitgutter'
   use 'nvim-telescope/telescope.nvim'
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-lua/plenary.nvim'
 
@@ -30,7 +30,7 @@ require('packer').startup(function()
   -- use { 'pangloss/vim-javascript', ft = 'javascript' }
   -- use { 'rust-lang/rust.vim', ft = 'rust' } 
   use 'sheerun/vim-polyglot'
-  use 'evanleck/vim-svelte'
+  -- use 'evanleck/vim-svelte'
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
@@ -44,11 +44,11 @@ require('packer').startup(function()
   use 'rafamadriz/friendly-snippets'
 
   -- DAP for debugging
-  use 'mfussenegger/nvim-dap'
-  use 'mfussenegger/nvim-dap-python'
-  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'mfussenegger/nvim-dap-python'
+  -- use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Theme
   use 'tomasiser/vim-code-dark'
