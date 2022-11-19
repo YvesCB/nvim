@@ -187,6 +187,7 @@ myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 vim.g.neovide_refresh_rate = 100
 vim.g.neovide_cursor_vfx_mode = 'sonicboom'
 vim.g.neovide_window_floating_opacity = 0.6
+vim.opt.guifont = { "JetBrainsMono", ":h12" }
 
 -- kassio/neoterm
 vim.g.neoterm_default_mod = 'vertical'
