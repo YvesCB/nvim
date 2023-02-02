@@ -43,8 +43,8 @@ keymap.set('n', '<leader>fl', ':Telescope live_grep<CR>', { silent=true })
 keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { silent=true })
 keymap.set('n', '<leader>fB', ':Telescope buffers<CR>', { silent=true })
 
--- tpope/vim-fugitive
-keymap.set('n', '<leader>gg', ':G<CR>', { silent=true })
+-- lazygit
+keymap.set('n', '<leader>gg', ':LazyGit<CR>', { silent=true })
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
