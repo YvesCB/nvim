@@ -96,6 +96,7 @@ local servers = {
   'rust_analyzer', 
   'tsserver', 
   'svelte',
+  'emmet_ls', -- for html, css, less, scss, sass, js, ts
   -- 'clangd' 
 }
 for _, lsp in pairs(servers) do
