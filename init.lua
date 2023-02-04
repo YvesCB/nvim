@@ -9,9 +9,6 @@ require('packer').startup(function()
   use 'itchyny/lightline.vim' 
   use 'itchyny/vim-gitbranch'
   use 'jiangmiao/auto-pairs'
-  use 'tpope/vim-ragtag'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
   use 'sbdchd/neoformat'
   use 'terryma/vim-multiple-cursors'
@@ -20,6 +17,7 @@ require('packer').startup(function()
   use 'szw/vim-maximizer'
   use 'kassio/neoterm'
   use 'airblade/vim-gitgutter'
+  use 'kdheepak/lazygit.nvim'
   use 'nvim-telescope/telescope.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -41,8 +39,8 @@ require('packer').startup(function()
   use 'rafamadriz/friendly-snippets'
 
   -- DAP for debugging
-  use 'mfussenegger/nvim-dap'
-  use 'mfussenegger/nvim-dap-python'
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'mfussenegger/nvim-dap-python'
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
