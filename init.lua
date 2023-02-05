@@ -11,16 +11,16 @@ require('packer').startup(function()
   use 'itchyny/lightline.vim' 
   use 'itchyny/vim-gitbranch'
   use 'jiangmiao/auto-pairs'
-  use 'tpope/vim-ragtag'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
   use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
+  use 'sbdchd/neoformat'
   use 'terryma/vim-multiple-cursors'
   use 'machakann/vim-highlightedyank'
   use 'justinmk/vim-sneak'
   use 'szw/vim-maximizer'
   use 'kassio/neoterm'
   use 'airblade/vim-gitgutter'
+  use 'kdheepak/lazygit.nvim'
   use 'nvim-telescope/telescope.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -44,9 +44,8 @@ require('packer').startup(function()
   use 'rafamadriz/friendly-snippets'
 
   -- DAP for debugging
-  use 'mfussenegger/nvim-dap'
-  use 'mfussenegger/nvim-dap-python'
-  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+  -- use 'mfussenegger/nvim-dap'
+  -- use 'mfussenegger/nvim-dap-python'
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -59,17 +58,17 @@ end)
 -- ========================================================
 -- Making it so :so reloads all the requires
 -- ...but it doesn't work
--- require('plenary.reload').reload_module('configs')
-function _G.ReloadConfig()
-  local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
-  for config,_ in pairs(configs) do
-    package.loaded[config] = nil
-  end
+require('plenary.reload').reload_module('configs')
+-- function _G.ReloadConfig()
+--   local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
+--   for config,_ in pairs(configs) do
+--     package.loaded[config] = nil
+--   end
 
-  dofile(vim.env.MYVIMRC)
-end
+--   dofile(vim.env.MYVIMRC)
+-- end
 
-vim.cmd('command! ReloadConfig lua ReloadConfig()')
+-- vim.cmd('command! ReloadConfig lua ReloadConfig()')
 
 local set = vim.opt
 set.number = true
@@ -79,8 +78,6 @@ set.expandtab = true
 set.ignorecase = true
 set.smartcase = true
 set.incsearch = true
-set.hidden = true
-set.exrc = true
 set.splitbelow = true
 set.splitright = true
 set.showmode = false
@@ -184,9 +181,9 @@ myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 -- ====================== GLABALS =========================
 -- ========================================================
 -- neovide
-vim.g.neovide_refresh_rate = 100
-vim.g.neovide_cursor_vfx_mode = 'sonicboom'
-vim.g.neovide_window_floating_opacity = 0.6
+-- vim.g.neovide_refresh_rate = 100
+-- vim.g.neovide_cursor_vfx_mode = 'sonicboom'
+-- vim.g.neovide_window_floating_opacity = 0.6
 
 -- kassio/neoterm
 vim.g.neoterm_default_mod = 'vertical'
@@ -201,7 +198,7 @@ vim.g.markdown_fenced_languages = {
 -- itchyny/lightline and itchyny/vim-gitbranch
 vim.g.lightline = {
   active = { left = {{'mode', 'paste'}, {'gitbranch', 'readonly', 'filename', 'modified'}}},
-  component_function = { gitbranch = 'fugitive#head' },
+  component_function = { gitbranch = 'gitbranch#name' },
   colorscheme = 'codedark',
 }
 

@@ -15,8 +15,9 @@ keymap.set('n', 'th', ':tabprevious <cr>', {silent=true})
 keymap.set('n', 'tl', ':tabnext <cr>', {silent=true})
 keymap.set('n', 'to', ':tabonly <cr>', {silent=true})
 keymap.set('n', 'tc', ':tabclose <cr>', {silent=true})
-keymap.set('n', '<leader>gp', ':Git push<cr>', {silent=true})
-keymap.set('n', '<c-f>', ':lua vim.lsp.buf.format()<cr>', {silent=true})
+keymap.set('i', 'kj', '<esc>', {silent=true, remap=true})
+keymap.set('v', 'kj', '<esc>', {silent=true})
+keymap.set('c', 'kj', '<C-c>', {silent=true})
 
 -- Buffer navigation
 keymap.set('n', '<c-tab>', ':bnext<cr>')
@@ -43,8 +44,8 @@ keymap.set('n', '<leader>fl', ':Telescope live_grep<CR>', { silent=true })
 keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { silent=true })
 keymap.set('n', '<leader>fB', ':Telescope buffers<CR>', { silent=true })
 
--- tpope/vim-fugitive
-keymap.set('n', '<leader>gg', ':G<CR>', { silent=true })
+-- lazygit
+keymap.set('n', '<leader>gg', ':LazyGit<CR>', { silent=true })
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -70,22 +71,21 @@ keymap.set('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 keymap.set('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
 -- DAP
-local dap = require('dap')
-local widgets = require('dap.ui.widgets')
-keymap.set('n', '<F5>', function() dap.continue() end, {silent=true})
-keymap.set('n', '<F10>', function() dap.step_over() end, {silent=true})
-keymap.set('n', '<F11>', function() dap.step_into() end, {silent=true})
-keymap.set('n', '<F12>', function() dap.step_out() end, {silent=true})
-keymap.set('n', '<F6>', function() dap.terminate() end, {silent=true})
+-- local dap = require('dap')
+-- local widgets = require('dap.ui.widgets')
+-- keymap.set('n', '<F5>', function() dap.continue() end, {silent=true})
+-- keymap.set('n', '<F10>', function() dap.step_over() end, {silent=true})
+-- keymap.set('n', '<F11>', function() dap.step_into() end, {silent=true})
+-- keymap.set('n', '<F12>', function() dap.step_out() end, {silent=true})
+-- keymap.set('n', '<F6>', function() dap.close() end, {silent=true})
 
-keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, {silent=true})
-keymap.set('n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Break condition: ')) end, {silent=true})
-keymap.set('n', '<leader>dl', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point: ')) end, {silent=true})
-keymap.set('n', '<leader>dc', function() dap.clear_breakpoints() end, {silent=true})
+-- keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, {silent=true})
+-- keymap.set('n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Break condition: ')) end, {silent=true})
+-- keymap.set('n', '<leader>dl', function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point: ')) end, {silent=true})
+-- keymap.set('n', '<leader>dc', function() dap.clear_breakpoints() end, {silent=true})
 
-keymap.set('n', '<leader>dr', function() dap.repl.open() end, {silent=true})
-keymap.set('n', '<leader>dq', function() dap.repl.close() end, {silent=true})
+-- keymap.set('n', '<leader>dr', function() dap.repl.open() end, {silent=true})
+-- keymap.set('n', '<leader>dq', function() dap.repl.close() end, {silent=true})
 
-keymap.set('n', '<leader>dv', function() widgets.hover() end, {silent=true})
-keymap.set('n', '<leader>ds', function() widgets.sidebar(widgets.scopes).open() end, {silent=true})
-
+-- keymap.set('n', '<leader>dv', function() widgets.hover() end, {silent=true})
+-- keymap.set('n', '<leader>ds', function() widgets.sidebar(widgets.scopes).open() end, {silent=true})
