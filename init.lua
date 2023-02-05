@@ -72,8 +72,6 @@ set.expandtab = true
 set.ignorecase = true
 set.smartcase = true
 set.incsearch = true
-set.hidden = true
-set.exrc = true
 set.splitbelow = true
 set.splitright = true
 set.showmode = false
@@ -163,13 +161,10 @@ myautocmd('BufNewFile', '*.h', skel_autocmd, '0r '..skel_path..'h.h')
 myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 
 -- ==================== GLOBALS ===========================
--- rustfmt
-vim.g.rustfmt_command = '~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustfmt'
-
 -- neovide
-vim.g.neovide_refresh_rate = 100
-vim.g.neovide_cursor_vfx_mode = 'sonicboom'
-vim.g.neovide_window_floating_opacity = 0.6
+-- vim.g.neovide_refresh_rate = 100
+-- vim.g.neovide_cursor_vfx_mode = 'sonicboom'
+-- vim.g.neovide_window_floating_opacity = 0.6
 
 -- kassio/neoterm
 vim.g.neoterm_default_mod = 'vertical'
