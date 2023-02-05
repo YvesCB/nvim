@@ -52,17 +52,17 @@ end)
 -- ============= GENERAL ================
 -- Making it so :so reloads all the requires
 -- ...but it doesn't work
--- require('plenary.reload').reload_module('configs')
-function _G.ReloadConfig()
-  local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
-  for config,_ in pairs(configs) do
-    package.loaded[config] = nil
-  end
+require('plenary.reload').reload_module('configs')
+-- function _G.ReloadConfig()
+--   local configs = {'telescope-config', 'keymap', 'lsp-config', 'treesitter-config'}
+--   for config,_ in pairs(configs) do
+--     package.loaded[config] = nil
+--   end
 
-  dofile(vim.env.MYVIMRC)
-end
+--   dofile(vim.env.MYVIMRC)
+-- end
 
-vim.cmd('command! ReloadConfig lua ReloadConfig()')
+-- vim.cmd('command! ReloadConfig lua ReloadConfig()')
 
 local set = vim.opt
 set.number = true
@@ -174,7 +174,7 @@ vim.g.neoterm_autoinsert = 1
 -- itchyny/lightline and itchyny/vim-gitbranch
 vim.g.lightline = {
   active = { left = {{'mode', 'paste'}, {'gitbranch', 'readonly', 'filename', 'modified'}}},
-  component_function = { gitbranch = 'fugitive#head' },
+  component_function = { gitbranch = 'gitbranch#name' },
   colorscheme = 'codedark',
 }
 
