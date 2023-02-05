@@ -9,6 +9,9 @@ keymap.set('n', 'th', ':tabprevious <cr>', {silent=true})
 keymap.set('n', 'tl', ':tabnext <cr>', {silent=true})
 keymap.set('n', 'to', ':tabonly <cr>', {silent=true})
 keymap.set('n', 'tc', ':tabclose <cr>', {silent=true})
+keymap.set('i', 'kj', '<esc>', {silent=true, remap=true})
+keymap.set('v', 'kj', '<esc>', {silent=true})
+keymap.set('c', 'kj', '<C-c>', {silent=true})
 
 -- Buffer navigation
 keymap.set('n', '<c-tab>', ':bnext<cr>')
