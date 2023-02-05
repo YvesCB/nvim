@@ -10,6 +10,7 @@ require('packer').startup(function()
   use 'itchyny/vim-gitbranch'
   use 'jiangmiao/auto-pairs'
   use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
   use 'sbdchd/neoformat'
   use 'terryma/vim-multiple-cursors'
   use 'machakann/vim-highlightedyank'
@@ -79,7 +80,7 @@ set.showmode = false
 set.showtabline = 2
 set.tabstop = 2
 set.shiftwidth = 2
-set.cmdheight = 2
+set.cmdheight = 1
 set.updatetime = 300
 set.laststatus = 3
 set.scrolloff = 3
@@ -162,6 +163,9 @@ myautocmd('BufNewFile', '*.h', skel_autocmd, '0r '..skel_path..'h.h')
 myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 
 -- ==================== GLOBALS ===========================
+-- rustfmt
+vim.g.rustfmt_command = '~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustfmt'
+
 -- neovide
 vim.g.neovide_refresh_rate = 100
 vim.g.neovide_cursor_vfx_mode = 'sonicboom'
