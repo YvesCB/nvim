@@ -180,9 +180,9 @@ local skel_path = path.vim_config..'skeletons/'
 -- ====================== GLABALS =========================
 -- ========================================================
 -- neovide
--- vim.g.neovide_refresh_rate = 100
--- vim.g.neovide_cursor_vfx_mode = 'sonicboom'
--- vim.g.neovide_window_floating_opacity = 0.6
+vim.g.neovide_refresh_rate = 100
+vim.g.neovide_cursor_vfx_mode = 'sonicboom'
+vim.g.neovide_window_floating_opacity = 0.6
 
 -- neoformat
 vim.g.neoformat_try_node_exe = 1
