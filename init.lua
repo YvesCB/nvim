@@ -146,7 +146,7 @@ require('config.lsp-config')
 -- ========================================================
 -- in lua\config\treesitter-config.lua
 require('config.treesitter-config')
-require 'nvim-treesitter.install'.compilers = { "clang" }
+-- require 'nvim-treesitter.install'.compilers = { "clang" }
 
 -- ========================================================
 -- ===================== TELESCOPE ========================
