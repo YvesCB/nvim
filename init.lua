@@ -125,6 +125,7 @@ if vim.g.neovide then
   vim.g.neovide_refresh_rate = 100
   vim.g.neovide_cursor_vfx_mode = 'sonicboom'
   vim.g.neovide_transparency = 0.95
+  vim.g.neovide_scroll_animation_length = 0.3
   -- vim.g.neovide_window_floating_opacity = 0.8
 end
 
@@ -134,7 +135,6 @@ end
 -- in lua\config\keymap.lua
 vim.g.mapleader = ' '
 require('config.keymap')
-
 -- ========================================================
 -- ================== LANGUAGE SERVER =====================
 -- ========================================================
