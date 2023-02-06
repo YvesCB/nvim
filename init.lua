@@ -86,18 +86,17 @@ set.incsearch = true
 set.splitbelow = true
 set.splitright = true
 set.showmode = false
-set.showtabline = 2
+set.showtabline = 1
 set.tabstop = 2
 set.shiftwidth = 2
 set.cmdheight = 1
 set.updatetime = 300
 set.laststatus = 3
 set.scrolloff = 3
-set.colorcolumn = '75'
+set.colorcolumn = ''
 set.encoding = 'utf-8'
 set.mouse = 'a'
 set.signcolumn = 'yes'
-set.guifont = 'JetBrainsMono NF:h11'
 set.diffopt:append('vertical')
 set.shortmess:append('c')
 
@@ -109,6 +108,7 @@ filetype plugin indent on
 
 set nobackup
 set nowritebackup
+set winbar=%f
 
 set completeopt=menu,menuone,noselect
 
@@ -116,6 +116,17 @@ if (has('termguicolors'))
   set termguicolors
 endif
 ]])
+
+-- ========================================================
+-- ====================== NEOVIDE==========================
+-- ========================================================
+if vim.g.neovide then
+  set.guifont = 'JetBrainsMono NF:h11'
+  vim.g.neovide_refresh_rate = 100
+  vim.g.neovide_cursor_vfx_mode = 'sonicboom'
+  vim.g.neovide_transparency = 0.95
+  -- vim.g.neovide_window_floating_opacity = 0.8
+end
 
 -- ========================================================
 -- ====================== KEYMAP ==========================
@@ -179,11 +190,6 @@ local skel_path = path.vim_config..'skeletons/'
 -- ========================================================
 -- ====================== GLABALS =========================
 -- ========================================================
--- neovide
-vim.g.neovide_refresh_rate = 100
-vim.g.neovide_cursor_vfx_mode = 'sonicboom'
-vim.g.neovide_window_floating_opacity = 0.6
-
 -- neoformat
 vim.g.neoformat_try_node_exe = 1
 
