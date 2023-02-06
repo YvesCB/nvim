@@ -29,6 +29,9 @@ keymap.set('n', '<c-k>', '<c-w><c-k>', {remap = true})
 keymap.set('n', '<c-l>', '<c-w><c-l>', {remap = true})
 keymap.set('n', '<c-h>', '<c-w><c-h>', {remap = true})
 
+-- neoformat
+keymap.set('n', '<leader>F', ':Neoformat <cr>', {remap = true})
+
 -- szw/vim-maximizer
 keymap.set('n', '<leader>m', ':MaximizerToggle!<CR>', { silent=true })
 

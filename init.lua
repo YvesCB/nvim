@@ -22,7 +22,9 @@ require('packer').startup(function()
   use 'airblade/vim-gitgutter'
   use 'kdheepak/lazygit.nvim'
   use 'nvim-telescope/telescope.nvim'
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- first version for linux and second version for windows
+  -- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-lua/plenary.nvim'
 
@@ -31,6 +33,9 @@ require('packer').startup(function()
   -- use { 'rust-lang/rust.vim', ft = 'rust' } 
   use 'sheerun/vim-polyglot'
   use 'evanleck/vim-svelte'
+
+  -- requires golang
+  use {'rrethy/vim-hexokinase', run = 'make'}
 
   -- LSP and completion
   use 'neovim/nvim-lspconfig'
@@ -130,6 +135,7 @@ require('config.lsp-config')
 -- ========================================================
 -- in lua\config\treesitter-config.lua
 require('config.treesitter-config')
+require 'nvim-treesitter.install'.compilers = { "clang" }
 
 -- ========================================================
 -- ===================== TELESCOPE ========================
@@ -141,7 +147,7 @@ require('config.telescope-config')
 -- ======================== DAP ===========================
 -- ========================================================
 -- in lua\config\dap-config.lua
-require('config.dap-config')
+--require('config.dap-config')
 
 -- ========================================================
 -- ==================== AUTOCOMANDS =======================
@@ -170,13 +176,6 @@ myautocmd('FileType', 'typescriptreact', tab_autocmd, 'setlocal shiftwidth=2 tab
 local skel_autocmd = api.nvim_create_augroup('skel_autocmd', {clear = true})
 local skel_path = path.vim_config..'skeletons/'
 
-myautocmd('BufNewFile', '*.tsx', skel_autocmd, '0r '..skel_path..'react-typescript.tsx')
-myautocmd('BufNewFile', '*.html', skel_autocmd, '0r '..skel_path..'html.html')
-myautocmd('BufNewFile', '*.py', skel_autocmd, '0r '..skel_path..'python.py')
-myautocmd('BufNewFile', '*.c', skel_autocmd, '0r '..skel_path..'c.c')
-myautocmd('BufNewFile', '*.h', skel_autocmd, '0r '..skel_path..'h.h')
-myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
-
 -- ========================================================
 -- ====================== GLABALS =========================
 -- ========================================================
@@ -184,6 +183,9 @@ myautocmd('BufNewFile', '*.cpp', skel_autocmd, '0r '..skel_path..'cpp.cpp')
 -- vim.g.neovide_refresh_rate = 100
 -- vim.g.neovide_cursor_vfx_mode = 'sonicboom'
 -- vim.g.neovide_window_floating_opacity = 0.6
+
+-- neoformat
+vim.g.neoformat_try_node_exe = 1
 
 -- kassio/neoterm
 vim.g.neoterm_default_mod = 'vertical'
