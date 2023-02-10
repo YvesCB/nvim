@@ -11,8 +11,14 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+  -- Hexokenise for color previewer
+  use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
+
   -- Vim surround plugin
   use 'kylechui/nvim-surround'
+
+  -- Vim autoclose to automatically close brackets/quote etc
+  use 'Townk/vim-autoclose'
 
   use { -- LSP Configuration & Plugins
       'neovim/nvim-lspconfig',
@@ -62,9 +68,6 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
-
-  -- Hexokenise for color previewer
-  use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -439,6 +442,7 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
+        { name = 'spell' },
     },
 }
 
