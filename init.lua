@@ -15,7 +15,7 @@ require('packer').startup(function(use)
   use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
   -- Vim surround plugin
-  use 'kylechui/nvim-surround'
+  use 'tpope/vim-surround'
 
   -- Vim autoclose to automatically close brackets/quote etc
   use 'Townk/vim-autoclose'
@@ -57,7 +57,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  -- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use 'tomasiser/vim-code-dark' -- Theme
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -104,6 +105,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Set winbar to show filename
+vim.o.winbar = '%f'
+
 -- Set relative line numbers
 vim.o.relativenumber = true
 
@@ -138,7 +142,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme codedark]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -174,7 +178,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'codedark',
         component_separators = '|',
         section_separators = '',
         globalstatus = true,
