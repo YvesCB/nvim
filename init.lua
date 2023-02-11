@@ -20,6 +20,9 @@ require('packer').startup(function(use)
   -- Vim autoclose to automatically close brackets/quote etc
   use 'Townk/vim-autoclose'
 
+  -- Vim sneak for easy movement
+  use 'justinmk/vim-sneak'
+
   use { -- LSP Configuration & Plugins
       'neovim/nvim-lspconfig',
       requires = {
@@ -178,7 +181,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'codedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
         globalstatus = true,
@@ -449,6 +452,25 @@ cmp.setup {
         { name = 'spell' },
     },
 }
+
+-- Custom keymaps
+
+-- Open a term bellow and quit the term with ctrl-q
+vim.keymap.set('n', '<c-q>', ':sp <cr> :term <cr> i', { silent = true })
+vim.keymap.set('t', '<c-q>', '<c-\\><c-n> :q<cr>', { silent = true })
+
+-- Cargo commands on demand
+vim.keymap.set('n', '<leader>cr', ':sp <cr> :term <cr> i cargo run <cr>', { silent = true })
+vim.keymap.set('n', '<leader>ct', ':sp <cr> :term <cr> i cargo test <cr>', { silent = true })
+vim.keymap.set('n', '<leader>crr', ':sp <cr> :term <cr> i cargo run --release <cr>', { silent = true })
+vim.keymap.set('n', '<leader>cb', ':sp <cr> :term <cr> i cargo build <cr>', { silent = true })
+vim.keymap.set('n', '<leader>cbr', ':sp <cr> :term <cr> i cargo build --release <cr>', { silent = true })
+
+-- Navigating splits more easily
+vim.keymap.set('n', '<c-h>', '<c-w><c-h>', { silent = true })
+vim.keymap.set('n', '<c-j>', '<c-w><c-j>', { silent = true })
+vim.keymap.set('n', '<c-k>', '<c-w><c-k>', { silent = true })
+vim.keymap.set('n', '<c-l>', '<c-w><c-l>', { silent = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
