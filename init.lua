@@ -456,16 +456,19 @@ cmp.setup {
 
 -- Custom keymaps
 
+-- Make search and replace easier
+vim.keymap.set('n', '<c-s>', ':%s/', { silent = false })
+
 -- Open a term bellow and quit the term with ctrl-q
-vim.keymap.set('n', '<c-q>', ':sp <cr> :term <cr> i', { silent = true })
-vim.keymap.set('t', '<c-q>', '<c-\\><c-n> :q<cr>', { silent = true })
+vim.keymap.set('n', '<c-q>', ':sp <cr> :term pwsh <cr> i', { silent = true })
+vim.keymap.set('t', '<c-q>', '<c-\\><c-n> :q <cr>', { silent = true })
 
 -- Cargo commands on demand
-vim.keymap.set('n', '<leader>cr', ':sp <cr> :term <cr> i cargo run <cr>', { silent = true })
-vim.keymap.set('n', '<leader>ct', ':sp <cr> :term <cr> i cargo test <cr>', { silent = true })
-vim.keymap.set('n', '<leader>crr', ':sp <cr> :term <cr> i cargo run --release <cr>', { silent = true })
-vim.keymap.set('n', '<leader>cb', ':sp <cr> :term <cr> i cargo build <cr>', { silent = true })
-vim.keymap.set('n', '<leader>cbr', ':sp <cr> :term <cr> i cargo build --release <cr>', { silent = true })
+vim.keymap.set('n', '<leader>cr', ':sp <cr> :term pwsh <cr> i cargo run <cr>', { silent = true })
+vim.keymap.set('n', '<leader>ct', ':sp <cr> :term pwsh <cr> i cargo test <cr>', { silent = true })
+vim.keymap.set('n', '<leader>crr', ':sp <cr> :term pwsh <cr> i cargo run --release <cr>', { silent = true })
+vim.keymap.set('n', '<leader>cb', ':sp <cr> :term pwsh <cr> i cargo build <cr>', { silent = true })
+vim.keymap.set('n', '<leader>cbr', ':sp <cr> :term pwsh <cr> i cargo build --release <cr>', { silent = true })
 
 -- Navigating splits more easily
 vim.keymap.set('n', '<c-h>', '<c-w><c-h>', { silent = true })
