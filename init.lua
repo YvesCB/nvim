@@ -114,8 +114,9 @@ vim.o.winbar = '%f'
 -- Set relative line numbers
 vim.o.relativenumber = true
 
--- Set splits to appear bellow as a default
+-- Set cursor to new split by default
 vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Set single status line
 vim.o.laststatus = 3
